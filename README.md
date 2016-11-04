@@ -29,17 +29,21 @@
 
 ## 단일 연산 변수(non-blocking)를 이용한 동기화
 
-- CPU의 CAS 연산 소개
-- java.util.Concurrent.AtomicReference 소개
+- CPU의 CAS 연산 소개 https://en.wikipedia.org/wiki/Compare-and-swap
+- java.util.Concurrent.AtomicReference 소개 http://docs.oracle.com/javase/8/docs/api/java/util/concurrent/atomic/AtomicReference.html
 - non-blocking 방식의 Counter 예제
 
 ## 락 방식과 단일 연산 변수 사용의 성능 비교
 
 - 자바병렬프로그래밍에 있는 성능 비교 자료 인용
 
+http://www.studfiles.ru/preview/1584090/page:26/
+
 ## 단순한 clojure.lang.Atom.java 코드 설명
 
 - Atom.java 코드 설명
+
+https://github.com/clojure/clojure/blob/master/src/jvm/clojure/lang/Atom.java
 
 ## 쓰레드를 이용하지 않는 병렬처리
 
@@ -55,16 +59,19 @@
 
 - go 블럭 소개
 - go 블럭 예제
+- 쓰레드 보다 값싼 go 블럭
+
+## 병렬 처리 작업와 I/O
+
+- non-blocking i/o vs blocking 쓰레드
+- 단순 쓰레드 갯수 현대 리눅스는 쓰레드를 많이 생성할 수 있다 - 비동기 의미가 있는가?
+- 논의 http://stackoverflow.com/questions/8546273/is-non-blocking-i-o-really-faster-than-multi-threaded-blocking-i-o-how
+- 비교 자료
 
 ## 콜백 보다 더 보기 좋은 방식
 
 - http.kit를 이용한 순차 콜백 처리 예제
 - core.async로 바꿔본 예제
-
-## non-blocking i/o vs 쓰레드
-
-- 현대 리눅스는 쓰레드를 많이 생성할 수 있다 - 비동기 의미가 있는가?
-- 비교 자료
 
 ## 웹에는 사용할 수 있는가?
 
@@ -76,6 +83,8 @@
 - ring 프로젝트에 진행중인 비동기 ring spec 소개 (Servlet 3.0 스팩 적용)
 - 비동기 ring 예제
 - 비동기 스타일 ring과 http.kit, core.aync를 활용한 예제
+
+https://groups.google.com/forum/#!topic/ring-clojure/58CkHMiJZtg
 
 ## 아쉽지만 다루지 못한 내용
 
