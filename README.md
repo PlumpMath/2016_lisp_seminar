@@ -250,43 +250,52 @@ public void run() {
     (println "After: checking=" @checking " Savings=" @savings)))
 ```
 
-## 
+## 동기화 클래스 (synchronizer)
 
+- 스레드와 스레드는 공유 데이터로 커뮤니케이션 할 수 있다.
+- 한 스레드가 다른 스레드의 결과를 기다려야 한다면?
+- 스레드 간의 작업 흐름을 조절 할 수 있도록 만들어 진 클래스를 동기화 클래스라고 한다.
+- java.util.concurrent.CountDownLatch
+- java.util.concurrent.FutureTask
 
+## FutureTask
 
----
+- 두 스레드가 각자의 계산을 한 후 합치는 예제
+- 스레드 풀을 사용하기 때문에 쓰레드 생성 / 소멸에 대한 성능저하나 OutOfMemory에 대해 안전하다.
 
-## Immutable
+## 클로저 future
 
-- 변경 가능한 데이터의 문제점
-  - deepCopy 전달로 해결 해야하는 문제
+- 클로저의 future는 블럭킹 되지 않는다.
+- 두 스레드가 각자의 계산을 한 후 합치는 예제
 
-## Atom
+## 클로저 promise를 이용한 정교한 작업 흐름 제어
 
-- lock 방식의 문제
-  - 메모리 가시성 문제
-- non-blocking과 lock
-  - 일반적인 상황에서 락의 성능 저하
-- 락을 써야할 경우 locking
+- CountDownLatch를 이용해서 값이 설정 될때 까지 블럭 킹
+- 두 스레드가 서로 결과를 주고 받으며 최종 결과를 도출 하는 예제
 
-## Future & Promise
+## 다시 논블럭킹
 
-- thread pool과
-  - 성능을 위한 스레드 생성 비용
-  - 안정성을 위한 리소스 제한
-
-- 데이터 중심적인 프로그래밍
+- future와 promise는 블럭킹 방식을 사용해서 스레드 간 작업 흐름을 조절한다.
+- 클로저의 core.async를 사용하면 논블럭킹 방식으로 작업 흐름을 조절 할 수 있다.
 
 ## core.async
 
-- blocking의 리소스 낭비 문제
+- 채널
+- go 블럭
 
+## core.async를 이용한 넌블럭킹 작업 흐름 제어
 
-## 함수형 프로그래밍 스타일
+## CSP
 
--
+- 더 심오한 함수적 의미 Tony Hoare
 
-## netflix/pigpen
+## 다루지 않은 내용
 
-- MR(map/reduce)는 함수형 프로그래밍에 자연스럽다.
-- 자바 MR 언어와 pigpen 예제로 비교
+- 함수형 프로그래밍의 병렬 처리 (pmap, reducer, transducer)
+- 람다 아키텍처 라이브러리들 (netflix/pigpen)
+
+## 결론
+
+- 현대 프로그래밍 언어들은 효과적으로 동시성 프로그램을 지원하고 있다.
+- 현대 프로그래밍 언어들을 사용해서 쉽게 동시성 프로그래밍을 하자.
+- 클로저로 하면 더 좋다. :)
